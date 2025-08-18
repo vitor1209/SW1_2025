@@ -15,31 +15,68 @@
 
     <section class="container-xl"> 
         <h2 class= "mb-3">Cadastrar Livro</h2>
-            <form class="row g-3">
+            <form class="row g-3" action="inserir.php" method = "POST">
                 <div class="mb-3">
-                    <input class="form-control" type="text" placeholder="Digite o nome do livro">
-                </div>
-                <div class="mb-3">
-                    <input class="form-control" type="text" placeholder="Digite o título do livro">
-                </div>
-                <div class="mb-3">
-                    <input class="form-control" type="text" placeholder="Digite o gênero do livro">
-                </div>
-                <div class="mb-3">
-                    <input class="form-control" type="text" placeholder="Digite o autor do livro">
-                </div>
-                <div class="mb-3">
-                    <input class="form-control" type="number" placeholder="Digite o ano do livro">
-                </div>
-                <div class="mb-3">
-                    <input class="form-control" type="number" placeholder="Digite o número de páginas do livro">
+                    <input class="form-control" type="text" name="titulo" required placeholder="Digite o título do livro">
                 </div>
 
-                <div class= "mb-3">
-                    <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+                
+               <div class="mb-3">
+                <label class="form-label">Gênero do livro:</label>
+
+                <div class="accordion" id="accordionGenero">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingGenero">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGenero" aria-expanded="false" aria-controls="collapseGenero">
+                                Selecionar Gêneros
+                            </button>
+                        </h2>
+                        <div id="collapseGenero" class="accordion-collapse collapse" aria-labelledby="headingGenero" data-bs-parent="#accordionGenero">
+                            <div class="accordion-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="genero[]" value="Romance" id="genero-romance">
+                                    <label class="form-check-label" for="genero-romance">Romance</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="genero[]" value="Ficção Científica" id="genero-ficcao">
+                                    <label class="form-check-label" for="genero-ficcao">Ficção Científica</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="genero[]" value="Fantasia" id="genero-fantasia">
+                                    <label class="form-check-label" for="genero-fantasia">Fantasia</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="genero[]" value="Terror" id="genero-terror">
+                                    <label class="form-check-label" for="genero-terror">Terror</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="genero[]" value="Biografia" id="genero-biografia">
+                                    <label class="form-check-label" for="genero-biografia">Biografia</label>
+                                </div>
+                                <!-- Adicione mais opções conforme necessário -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="autor" required placeholder="Digite o autor do livro">
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="ano" required placeholder="Digite o ano do livro">
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="paginas" required placeholder="Digite o número de páginas do livro">
+                </div>
+
+                <div class= "mb-3 d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success mb-3">Confirmar</button>
+                    <a href="index.php" class="btn btn-danger mb-3">Voltar</a>
                 </div>
             </form>
     </section>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
