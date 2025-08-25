@@ -25,6 +25,7 @@
                 <th scope="col">GENERO</th>
                 <th scope="col">ANO</th>
                 <th scope="col">PAGINAS</th>
+                <th scope="col">OPÇÕES</th>
               </tr>
             </thead>
             <tbody>
@@ -44,6 +45,13 @@
                           echo "<td>" . $livro['genero'] . "</td>";
                           echo "<td>" . $livro['ano'] . "</td>";
                           echo "<td>" . $livro['paginas'] . "</td>";
+                          echo
+                          "<td>
+                          <div class='btn-group' role='group'>
+                         <a href='form_atualizar.php?id=" . $livro['id'] . "' type='button' class='btn btn-warning'>Editar</a>
+                              <a class='btn btn-danger'>Apagar</a>
+                          </div>                             
+                          </td>";
                       echo "</tr>";
                   }
               ?>
