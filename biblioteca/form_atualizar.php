@@ -17,31 +17,36 @@
 
     <section class="container-xl"> 
         <h2 class= "mb-3">Cadastrar Livro</h2>
-            <form class="row g-3" action="#" method = "POST">
+            <form class="row g-3" action="atualizar.php?id=<?php echo $id;?>" method = "POST">
 
 
             <?php
                 require 'conexao.php';
                 $sql = "SELECT * FROM livro WHERE id = $id ";
                 $stmt = $pdo->query($sql);
-                // $produto = $stmt->fetchALL(PDO:: FETCH_ASSOC);
-                // echo "<pre>";
-                // var_dump($produto[2]);
+                $livro = $stmt->fetch (PDO:: FETCH_ASSOC);
+                  
+                $titulo = $livro['titulo'];
+                $autor = $livro['autor'];
+                $genero = $livro['genero']; 
+                $genero = $livro['genero'];
+                $listGenero = explode(',', $genero);
+                $listGenero = array_map('trim', explode(',', $genero));
 
-                while ($livro = $stmt->fetch (PDO:: FETCH_ASSOC)) {                    
-                    $titulo = $livro['titulo'];
-                    $autor = $livro['autor'];
-                    $generosSelecionados = explode(',', $livro['genero']); 
-                    $ano = $livro['ano'];
-                    $paginas = $livro['paginas'];
-                }
+                                $ano = $livro['ano'];
+                $paginas = $livro['paginas'];
+                
             ?>
 
                 <div class="mb-3">
-                    <input class="form-control" type="text" name="titulo" value="<?php echo"$titulo";?>" required >
-                </div>
+                    <input class="form-control" type="text" name="novoTitulo" value="<?php echo"$titulo";?>" required >
+                </div>   
                 
-               <div class="mb-3">
+                <!-- <div class="mb-3">
+                    <input class="form-control" type="text" name="novoGenero" value="<?php echo"$genero";?>" required >
+                </div>    -->
+                
+                <div class="mb-3">
                 <label class="form-label">Gênero do livro:</label>
 
                 <div class="accordion" id="accordionGenero">
@@ -55,31 +60,31 @@
                             <div class="accordion-body">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="genero[]" value="Romance" id="genero-romance"
-                                <?php if (in_array('Romance', $generosSelecionados)) echo 'checked'; ?>>
+                                <?php if (in_array('Romance', $listGenero)) echo 'checked'; ?>>
                                 <label class="form-check-label" for="genero-romance">Romance</label>
                             </div>
 
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="genero[]" value="Ficção Científica" id="genero-ficcao"
-                                <?php if (in_array('Ficção Científica', $generosSelecionados)) echo 'checked'; ?>>
+                                <?php if (in_array('Ficção Científica', $listGenero)) echo 'checked'; ?>>
                                 <label class="form-check-label" for="genero-ficcao">Ficção Científica</label>
                             </div>
 
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="genero[]" value="Fantasia" id="genero-fantasia"
-                                <?php if (in_array('Fantasia', $generosSelecionados)) echo 'checked'; ?>>
+                                <?php if (in_array('Fantasia', $listGenero)) echo 'checked'; ?>>
                                 <label class="form-check-label" for="genero-fantasia">Fantasia</label>
                             </div>
 
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="genero[]" value="Terror" id="genero-terror"
-                                <?php if (in_array('Terror', $generosSelecionados)) echo 'checked'; ?>>
+                                <?php if (in_array('Terror', $listGenero)) echo 'checked'; ?>>
                                 <label class="form-check-label" for="genero-terror">Terror</label>
                             </div>
 
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="genero[]" value="Biografia" id="genero-biografia"
-                                <?php if (in_array('Biografia', $generosSelecionados)) echo 'checked'; ?>>
+                                <?php if (in_array('Biografia', $listGenero)) echo 'checked'; ?>>
                                 <label class="form-check-label" for="genero-biografia">Biografia</label>
                             </div>
 
@@ -90,13 +95,13 @@
             </div>
 
                 <div class="mb-3">
-                    <input class="form-control" type="text" name="autor" required value="<?php echo"$autor";?>">
+                    <input class="form-control" type="text" name="novoAutor" required value="<?php echo"$autor";?>">
                 </div>
                 <div class="mb-3">
-                    <input class="form-control" type="number" name="ano" required value="<?php echo"$ano";?>">
+                    <input class="form-control" type="number" name="novoAno" required value="<?php echo"$ano";?>">
                 </div>
                 <div class="mb-3">
-                    <input class="form-control" type="number" name="paginas" required value="<?php echo"$paginas";?>">
+                    <input class="form-control" type="number" name="novoPaginas" required value="<?php echo"$paginas";?>">
                 </div>
 
                 <div class= "mb-3 d-flex justify-content-between">
