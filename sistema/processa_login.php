@@ -16,12 +16,12 @@
 
     $num_registros = $stmt->rowCount();
 
-    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
     var_dump($resultado);
 
     if ($num_registros == 0) {
-        // echo "PODE NAO";
+        // echo $resultado;
         header('Location: index.php');
 
     } else {
